@@ -23,7 +23,7 @@ class ItemDetailFragment : Fragment() {
      */
     private var item: PlaceholderContent.PlaceholderItem? = null
 
-    lateinit var itemDetailTextView: TextView
+    lateinit var nomeTextView: TextView
 
     private var _binding: FragmentItemDetailBinding? = null
 
@@ -39,7 +39,7 @@ class ItemDetailFragment : Fragment() {
                 // Load the placeholder content specified by the fragment
                 // arguments. In a real-world scenario, use a Loader
                 // to load content from a content provider.
-                item = PlaceholderContent.ITEM_MAP[it.getString(ARG_ITEM_ID)]
+                item = PlaceholderContent.ITEM_MAP[it.getLong(ARG_ITEM_ID)]
             }
         }
     }
@@ -52,12 +52,12 @@ class ItemDetailFragment : Fragment() {
         _binding = FragmentItemDetailBinding.inflate(inflater, container, false)
         val rootView = binding.root
 
-        binding.toolbarLayout?.title = item?.content
+        binding.toolbarLayout?.title = item?.nome
 
-        itemDetailTextView = binding.itemDetail
+        nomeTextView = binding.itemDetail
         // Show the placeholder content as text in a TextView.
         item?.let {
-            itemDetailTextView.text = it.details
+            nomeTextView.text = it.nome
         }
 
         return rootView
